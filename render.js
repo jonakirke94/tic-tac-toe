@@ -4,6 +4,8 @@ const SELECTORS = {
 	NEW_GAME: '#new-game',
 	PLAYER_ONE: '#player-one',
 	PLAYER_TWO: '#player-two',
+	PLAYER_ONE_SYMBOL_SELECT: '#player-one-symbol-select',
+	PLAYER_TWO_SYMBOL_SELECT: '#player-two-symbol-select',
 	PLAYER_ONE_SYMBOL: '#player-one span',
 	PLAYER_TWO_SYMBOL: '#player-two span',
 }
@@ -35,7 +37,9 @@ const render = () => {
 	const bindNewGameClick = (handler) => {
 		document.querySelector(SELECTORS.NEW_GAME).addEventListener('click', (_) => {
 			const gridSize = document.querySelector(SELECTORS.GRID_SIZE_SELECT).value;
-			handler(gridSize);
+			const playerOne = document.querySelector(SELECTORS.PLAYER_ONE_SYMBOL_SELECT).value;
+			const playerTwo = document.querySelector(SELECTORS.PLAYER_TWO_SYMBOL_SELECT).value;
+			handler({gridSize, playerOne, playerTwo});
 		});
 	}
 

@@ -17,8 +17,8 @@ const game = function() {
 	const resetState = () => {
 		state = {
 			gridSize: 3,
-			playerOne: '😄',
-			playerTwo: '😍',
+			playerOne: '',
+			playerTwo: '',
 			currentTurn: 'playerOne',
 			board: [],
 			gameOver: false,
@@ -27,9 +27,9 @@ const game = function() {
 	}
 
 	const init = () => {
-		ui.bindNewGameClick((gridSize) => {
+		ui.bindNewGameClick((userInput) => {
 			resetState();
-			state.gridSize = gridSize;
+			state = { ...state, ...userInput };
 			ui.reset();
 			instantiateGame();
 		});
